@@ -1,6 +1,15 @@
 var express=require('express');
 const app=express();
-app.get('/api/customers',(req,res)=>{
+const cors = require('cors');
+app.use(cors({
+  origin: '*'
+}));
+
+
+app.get('/', (req, res, next)=>{
+  res.send("Hello World")
+})
+app.get('/api/customers',cors(), (req, res, next)=>{
   const customers=[
     {id:1, firstName:'Sagar', lastName:'kattel'},
     {id:2, firstName:'Hello', lastName:'Hi'}
@@ -8,4 +17,4 @@ app.get('/api/customers',(req,res)=>{
   res.json(customers);
 })
 const port =5000;
-app.listen(port,()=>console.log(`Server is running at port ${port}`));
+app.listen(process.env.PORT||port,()=>console.log(`Server is running at port ${port}`));
