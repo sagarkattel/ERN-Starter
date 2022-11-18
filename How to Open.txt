@@ -4,6 +4,8 @@ npm install
 2) npm i express
 3) npm i nodemon
 4) npm i cors
+5) nodemon server.js
+
 
 
 
